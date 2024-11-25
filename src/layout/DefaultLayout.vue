@@ -1,0 +1,16 @@
+<script lang="ts" setup>
+import MyHeader from '@/components/MyHeader.vue';
+import MyFooter from '@/components/MyFooter.vue';
+</script>
+
+<template>
+    <MyHeader class="header">
+        <slot name="header"></slot>
+    </MyHeader>
+    <main>
+        <slot></slot>
+    </main>
+    <MyFooter class="footer">
+        <slot name="footer"></slot>
+    </MyFooter>
+</template>
