@@ -10,7 +10,7 @@ import MyFooter from '@/components/MyFooter.vue';
     <main>
         <slot></slot>
     </main>
-    <MyFooter class="footer">
+    <MyFooter>
         <slot name="footer"></slot>
     </MyFooter>
 </template>
