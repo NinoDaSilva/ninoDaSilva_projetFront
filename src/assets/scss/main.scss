@@ -3,3 +3,14 @@
 @use 'foundations/functions';
 @use 'foundations/mixins';
 @use 'foundations/normalize';
+
+// Base
+body {
+    font-family: $fontTextFamily;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
