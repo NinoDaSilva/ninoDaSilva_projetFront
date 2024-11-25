@@ -18,4 +18,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/assets/scss/foundations/variables";
+          @import "@/assets/scss/foundations/functions";
+          @import "@/assets/scss/foundations/mixins";
+        `,
+      },
+    },
+  },
 })
