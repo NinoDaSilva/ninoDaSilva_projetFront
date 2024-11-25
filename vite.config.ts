@@ -22,9 +22,9 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import "@/assets/scss/foundations/variables";
-          @import "@/assets/scss/foundations/functions";
-          @import "@/assets/scss/foundations/mixins";
+          @use "@/assets/scss/foundations/variables" as *;
+          @use "@/assets/scss/foundations/functions" as *;
+          @use "@/assets/scss/foundations/mixins" as *;
         `,
       },
     },
