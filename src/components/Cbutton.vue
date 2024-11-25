@@ -56,5 +56,9 @@ defineProps<{
     &.-small {
         padding: rem(8px) rem(16px);
     }
+
+    @include small-down() {
+        padding: rem(8px) rem(16px);
+    }
 }
 </style>
