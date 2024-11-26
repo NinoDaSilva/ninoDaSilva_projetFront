@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import FacebookIcon from '@/components/icons/FacebookIcon.vue';
+import TiktokIcon from '@/components/icons/TiktokIcon.vue';
+import InstagramIcon from '@/components/icons/InstagramIcon.vue';
 const currentYear = new Date().getFullYear();
 </script>
 
@@ -24,14 +27,17 @@ const currentYear = new Date().getFullYear();
         <ul class="footer__social">
             <li class="social__items">
                 <RouterLink class="social__link" to="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <InstagramIcon />
                 </RouterLink>
             </li>
             <li class="social__items">
                 <RouterLink class="social__link" to="https://facebook.com" target="_blank" aria-label="Facebook">
+                    <FacebookIcon />
                 </RouterLink>
             </li>
             <li class="social__items">
                 <RouterLink class="social__link" to="https://tiktok.com" target="_blank" aria-label="TikTok">
+                    <TiktokIcon />
                 </RouterLink>
             </li>
         </ul>
@@ -61,14 +67,16 @@ const currentYear = new Date().getFullYear();
     &__nav {
         .footer-nav__list {
             display: flex;
-            flex-direction: column;
-            gap: rem(20px);
+            flex-wrap: wrap;
+            gap: rem(15px);
             font-size: rem(18px);
+            justify-content: center;
 
             .footer-nav__link {
                 text-decoration: none;
                 transition: all 0.3s ease;
                 color: $SkyWhite;
+                margin-inline: rem(20px);
 
                 &:hover {
                     color: $PrimaryDark;
@@ -79,7 +87,12 @@ const currentYear = new Date().getFullYear();
 
     &__social {
         display: flex;
-        gap: rem(20px);
+        gap: rem(25px);
+
+        .social__items {
+            width: rem(30px);
+            height: rem(30px);
+        }
 
         &__link {
             color: $InkDark;
