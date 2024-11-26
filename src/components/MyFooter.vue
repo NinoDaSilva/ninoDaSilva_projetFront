@@ -60,11 +60,13 @@ const currentYear = new Date().getFullYear();
 
     &__credit {
         font-size: rem(13px);
-        margin-top: rem(15px);
+        margin-top: rem(35px);
         color: $SkyLightest;
     }
 
     &__nav {
+        margin-bottom: rem(15px);
+
         .footer-nav__list {
             display: flex;
             flex-wrap: wrap;
