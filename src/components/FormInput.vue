@@ -38,6 +38,7 @@ defineProps({
         max-width: 100%;
         height: auto;
         border-radius: 8px;
+        transition: all 0.2s ease;
 
         &:hover,
         &:focus {
@@ -50,7 +51,13 @@ defineProps({
         }
 
         &.-error {
-            outline: 2px solid $RedBase;
+            border-color: $RedBase;
+            outline: 1px solid $RedBase;
+
+            &:focus {
+                border-color: $PrimaryBase;
+                outline: 1px solid $PrimaryBase;
+            }
         }
 
         &.-disable {
