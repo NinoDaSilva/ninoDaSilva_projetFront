@@ -39,9 +39,10 @@ defineProps({
         height: auto;
         border-radius: 8px;
 
+        &:hover,
         &:focus {
-            outline-color: $PrimaryBase;
-            outline-width: 2px;
+            border-color: $PrimaryBase;
+            outline: 1px solid $PrimaryBase;
         }
 
         &:placeholder {
