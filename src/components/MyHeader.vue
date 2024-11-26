@@ -68,7 +68,6 @@ const user = ref({
                 transition: all 0.2s ease;
 
                 &:hover {
-                    text-decoration: underline;
                     color: $PrimaryDark;
                 }
             }
