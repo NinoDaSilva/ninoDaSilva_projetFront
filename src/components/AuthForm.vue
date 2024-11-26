@@ -28,7 +28,6 @@ const handleSubmit = (event: Event) => {
 
             <FormInput label="Adresse email" type="email" name="email" placeholder="Entrez votre email" />
             <FormInput label="Mot de passe" type="password" name="password" placeholder="Entrez votre mot de passe" />
-
             <FormInput v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
                 placeholder="Confirmez votre mot de passe" />
 
@@ -44,38 +43,43 @@ const handleSubmit = (event: Event) => {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .auth-form {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background: #fff;
+    max-width: rem(400px);
+    padding: 5%;
+    background: $SkyWhite;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 5%;
-    margin-inline: auto;
+    margin: auto;
+
+    @include small-up() {
+        padding: rem(30px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 5% auto;
+    }
 
     &__title {
-        font-size: 24px;
+        font-size: rem(26px);
+        font-weight: bold;
         text-align: center;
-        margin-bottom: 20px;
-        color: #333;
+        margin-bottom: rem(30px);
+        margin-top: 0;
+        color: $InkDarkest;
     }
 
     &__form {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: rem(15px);
     }
 
     &__submit {
-        margin-top: 10px;
+        margin-top: rem(10px);
     }
 
     &__switch {
         text-align: center;
-        margin-top: 15px;
-        font-size: 14px;
+        margin-top: rem(18px);
+        font-size: rem(14px);
 
         a {
             color: #007bff;
@@ -83,7 +87,7 @@ const handleSubmit = (event: Event) => {
             cursor: pointer;
 
             &:hover {
-                color: #0056b3;
+                color: $BlueDarkest;
             }
         }
     }
