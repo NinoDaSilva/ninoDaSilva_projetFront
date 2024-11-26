@@ -4,7 +4,7 @@ import MyFooter from '@/components/MyFooter.vue';
 </script>
 
 <template>
-    <MyHeader class="header">
+    <MyHeader>
         <slot name="header"></slot>
     </MyHeader>
     <main>
