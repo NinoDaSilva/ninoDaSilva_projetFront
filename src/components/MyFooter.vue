@@ -31,7 +31,7 @@ const currentYear = new Date().getFullYear();
                 </RouterLink>
             </li>
             <li class="social__items">
-                <RouterLink class="social__link" to="https://x.com" target="_blank" aria-label="X">
+                <RouterLink class="social__link" to="https://tiktok.com" target="_blank" aria-label="TikTok">
                 </RouterLink>
             </li>
         </ul>
