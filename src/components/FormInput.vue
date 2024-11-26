@@ -1,21 +1,20 @@
-<script setup lang="ts">
-import { defineProps } from 'vue';
-
-defineProps({
-    label: String,
-    type: {
-        type: String,
-        default: 'text',
-    },
-    name: String,
-    placeholder: String,
-});
+<script lang="ts" setup>
+defineProps<{
+    label: string,
+    type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url',
+    name: string,
+    placeholder: string,
+    disabled?: boolean,
+}>();
 </script>
 
 <template>
     <div class="form-input">
         <label :for="name" class="form-input__label">{{ label }}</label>
-        <input :id="name" :type="type" :name="name" :placeholder="placeholder" class="form-input__input" />
+        <input :id="name" :type="type" :name="name" :placeholder="placeholder" :class="{
+            'form-input__input': true,
+            '-disabled': disabled,
+        }" />
     </div>
 </template>
 
