@@ -19,27 +19,44 @@ defineProps({
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .form-input {
     display: flex;
     flex-direction: column;
 
     &__label {
-        font-size: 14px;
-        margin-bottom: 5px;
-        color: #555;
+        font-size: rem(14px);
+        margin-bottom: rem(5px);
+        color: $InkLighter;
     }
 
     &__input {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: border-color 0.2s ease;
+        background-color: $SkyWhite;
+        padding: rem(16px);
+        border: 1px solid $SkyLight;
+        color: $InkDarkest;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
 
         &:focus {
-            outline: none;
-            border-color: #007bff;
+            outline-color: $PrimaryBase;
+            outline-width: 2px;
+        }
+
+        &:placeholder {
+            color: $InkLighter;
+        }
+
+        &.-error {
+            outline: 2px solid $RedBase;
+        }
+
+        &.-disable {
+            background-color: $SkyLightest;
+            border-color: $SkyLighter;
+            color: $SkyBase;
+            cursor: not-allowed;
         }
     }
 }
