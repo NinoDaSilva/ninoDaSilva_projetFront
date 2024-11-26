@@ -23,3 +23,22 @@ const meta: Meta<typeof FormInput> = {
         },
     },
 };
+
+export default meta;
+type Story = StoryObj<typeof FormInput>;
+
+export const Primary: Story = {
+  render: (args) => ({
+    components: { FormInput },
+    setup() {
+      return { args };
+    },
+    template: '<FormInput v-bind="args" />',
+  }),
+  args: {
+    label: 'Label',
+    name: '',
+    placeholder: 'Placeholder',
+    type: 'text'
+  },
+};
