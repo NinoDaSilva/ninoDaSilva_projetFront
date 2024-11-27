@@ -15,7 +15,6 @@ export default [
   {
     rules: {
       'vue/multi-word-component-names': [
-        'off',
         'error',
         {
           ignores: [],
@@ -26,4 +25,9 @@ export default [
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),
   skipFormatting,
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 ]
