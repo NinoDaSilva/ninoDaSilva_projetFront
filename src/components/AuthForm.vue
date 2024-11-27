@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import FormInput from '@/components/FormInput.vue';
 import Button from '@/components/Cbutton.vue';
 
-const isSignUp = ref(false);
+const props = defineProps<{
+    isSignUp: boolean,
+}>();
+const emit = defineEmits(['update:isSignUp', 'submit']);
 
+// Fonction pour basculer entre les deux états
 const switchMode = () => {
-    isSignUp.value = !isSignUp.value;
+    emit('update:isSignUp', !props.isSignUp);
 };
 
+// Gestion de l'envoie du formulaire
 const handleSubmit = (event: Event) => {
     event.preventDefault();
-    if (isSignUp.value) {
+    emit('submit', props.isSignUp ? 'Inscription' : 'Connexion');
+    if (props.isSignUp) {
         console.log('Inscription');
     } else {
         console.log('Connexion');
