@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import FacebookIcon from './icons/FacebookIcon.vue';
+import InstagramIcon from './icons/InstagramIcon.vue';
+import TiktokIcon from './icons/TiktokIcon.vue';
+
 const currentYear = new Date().getFullYear();
 </script>
 
