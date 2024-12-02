@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import FormInput from '@/components/FormInput.vue';
-import Button from '@/components/Cbutton.vue';
-
 const props = defineProps<{
     isSignUp: boolean,
 }>();
