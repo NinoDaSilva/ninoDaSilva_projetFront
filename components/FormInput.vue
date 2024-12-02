@@ -15,7 +15,7 @@ defineProps<{
 :id="name" :type="type" :name="name" :placeholder="placeholder" :class="{
             'form-input__input': true,
             '-disabled': disabled,
-        }" >
+        }">
     </div>
 </template>
 

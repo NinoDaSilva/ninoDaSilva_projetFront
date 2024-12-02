@@ -15,9 +15,15 @@ const user = ref({
 
         <nav class="header__menu">
             <ul class="menu__list">
-                <li class="menu__item"><NuxtLink class="menu__link" to="/">Accueil</NuxtLink></li>
-                <li class="menu__item"><NuxtLink class="menu__link" to="/habits">Mes habitudes</NuxtLink></li>
-                <li class="menu__item"><NuxtLink class="menu__link" to="/new-habit">Nouvelle habitude</NuxtLink></li>
+                <li class="menu__item">
+                    <NuxtLink class="menu__link" to="/">Accueil</NuxtLink>
+                </li>
+                <li class="menu__item">
+                    <NuxtLink class="menu__link" to="/habits">Mes habitudes</NuxtLink>
+                </li>
+                <li class="menu__item">
+                    <NuxtLink class="menu__link" to="/new-habit">Nouvelle habitude</NuxtLink>
+                </li>
             </ul>
         </nav>
     </header>
