@@ -28,12 +28,14 @@ const handleSubmit = (event: Event) => {
     <div class="auth-form">
         <h1 class="auth-form__title">{{ isSignUp ? 'Inscription' : 'Connexion' }}</h1>
         <form class="auth-form__form" @submit="handleSubmit">
-            <FormInput v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username"
+            <FormInput
+v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username"
                 placeholder="Entrez votre nom d'utilisateur" />
 
             <FormInput label="Adresse email" type="email" name="email" placeholder="Entrez votre email" />
             <FormInput label="Mot de passe" type="password" name="password" placeholder="Entrez votre mot de passe" />
-            <FormInput v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
+            <FormInput
+v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
                 placeholder="Confirmez votre mot de passe" />
 
             <Button :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
@@ -41,7 +43,7 @@ const handleSubmit = (event: Event) => {
 
         <div class="auth-form__switch">
             {{ isSignUp ? 'Vous avez un compte ?' : 'Pas encore inscrit ?' }}
-            <a @click.prevent="switchMode" href="#">
+            <a href="#" @click.prevent="switchMode">
                 {{ isSignUp ? 'Se connecter' : 'S\'inscrire' }}
             </a>
         </div>
