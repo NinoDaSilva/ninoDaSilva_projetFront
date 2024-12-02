@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import FacebookIcon from '@/components/icons/FacebookIcon.vue';
-import TiktokIcon from '@/components/icons/TiktokIcon.vue';
-import InstagramIcon from '@/components/icons/InstagramIcon.vue';
+import FacebookIcon from './icons/FacebookIcon.vue';
+import InstagramIcon from './icons/InstagramIcon.vue';
+import TiktokIcon from './icons/TiktokIcon.vue';
+
 const currentYear = new Date().getFullYear();
 </script>
 
@@ -10,35 +11,35 @@ const currentYear = new Date().getFullYear();
         <nav class="footer__nav">
             <ul class="footer-nav__list">
                 <li class="footer-nav__item">
-                    <RouterLink class="footer-nav__link" to="/">Accueil</RouterLink>
+                    <NuxtLink class="footer-nav__link" to="/">Accueil</NuxtLink>
                 </li>
                 <li class="footer-nav__item">
-                    <RouterLink class="footer-nav__link" to="/habits">Mes habitudes</RouterLink>
+                    <NuxtLink class="footer-nav__link" to="/habits">Mes habitudes</NuxtLink>
                 </li>
                 <li class="footer-nav__item">
-                    <RouterLink class="footer-nav__link" to="/about">À propos</RouterLink>
+                    <NuxtLink class="footer-nav__link" to="/about">À propos</NuxtLink>
                 </li>
                 <li class="footer-nav__item">
-                    <RouterLink class="footer-nav__link" to="/contact">Contact</RouterLink>
+                    <NuxtLink class="footer-nav__link" to="/contact">Contact</NuxtLink>
                 </li>
             </ul>
         </nav>
 
         <ul class="footer__social">
             <li class="social__items">
-                <RouterLink class="social__link" to="https://instagram.com" target="_blank" aria-label="Instagram">
+                <NuxtLink class="social__link" to="https://instagram.com" target="_blank" aria-label="Instagram">
                     <InstagramIcon />
-                </RouterLink>
+                </NuxtLink>
             </li>
             <li class="social__items">
-                <RouterLink class="social__link" to="https://facebook.com" target="_blank" aria-label="Facebook">
+                <NuxtLink class="social__link" to="https://facebook.com" target="_blank" aria-label="Facebook">
                     <FacebookIcon />
-                </RouterLink>
+                </NuxtLink>
             </li>
             <li class="social__items">
-                <RouterLink class="social__link" to="https://tiktok.com" target="_blank" aria-label="TikTok">
+                <NuxtLink class="social__link" to="https://tiktok.com" target="_blank" aria-label="TikTok">
                     <TiktokIcon />
-                </RouterLink>
+                </NuxtLink>
             </li>
         </ul>
 
