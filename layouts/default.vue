@@ -2,13 +2,15 @@
 </script>
 
 <template>
-    <MyHeader>
-        <slot name="header"/>
-    </MyHeader>
-    <main>
-        <slot/>
-    </main>
-    <MyFooter>
-        <slot name="footer"/>
-    </MyFooter>
+    <div>
+        <MyHeader>
+            <slot name="header" />
+        </MyHeader>
+        <main>
+            <slot />
+        </main>
+        <MyFooter>
+            <slot name="footer" />
+        </MyFooter>
+    </div>
 </template>
