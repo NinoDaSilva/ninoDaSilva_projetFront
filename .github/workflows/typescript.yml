@@ -3,9 +3,8 @@ name: Test TypeScript
 on:
   pull_request:
     types:
-      
-opened
-synchronize
+      - opened
+      - synchronize
 
 jobs:
   typescript:
