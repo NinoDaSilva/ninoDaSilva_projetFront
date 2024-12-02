@@ -32,4 +32,4 @@ name: Install dependencies
       # Lancer le type check TypeScript
       
 name: TypeScript Type Check
-      run: npm run type-check
+      run: npx nuxi typecheck
