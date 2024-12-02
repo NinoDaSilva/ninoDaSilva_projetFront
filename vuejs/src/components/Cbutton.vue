@@ -7,7 +7,8 @@ defineProps<{
 </script>
 
 <template>
-    <button :class="{
+    <button
+:class="{
         'e-button': true,
         '-outline': variant === 'outline',
         '-disabled': disabled,

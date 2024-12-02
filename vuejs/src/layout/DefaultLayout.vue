@@ -5,12 +5,12 @@ import MyFooter from '@/components/MyFooter.vue';
 
 <template>
     <MyHeader>
-        <slot name="header"></slot>
+        <slot name="header"/>
     </MyHeader>
     <main>
-        <slot></slot>
+        <slot/>
     </main>
     <MyFooter>
-        <slot name="footer"></slot>
+        <slot name="footer"/>
     </MyFooter>
 </template>

@@ -11,10 +11,11 @@ defineProps<{
 <template>
     <div class="form-input">
         <label :for="name" class="form-input__label">{{ label }}</label>
-        <input :id="name" :type="type" :name="name" :placeholder="placeholder" :class="{
+        <input
+:id="name" :type="type" :name="name" :placeholder="placeholder" :class="{
             'form-input__input': true,
             '-disabled': disabled,
-        }" />
+        }" >
     </div>
 </template>
 
