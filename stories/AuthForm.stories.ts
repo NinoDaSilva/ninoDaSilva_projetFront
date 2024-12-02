@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook-vue/nuxt'
 
 import AuthForm from '@/components/AuthForm.vue'
 
