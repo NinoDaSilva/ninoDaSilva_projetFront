@@ -15,18 +15,12 @@
   },
   "dependencies": {
     "@nuxt/eslint": "^0.7.2",
-    "@nuxtjs/storybook": "^8.3.2",
     "eslint": "^9.16.0",
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.4.6",
-    "@storybook/addon-interactions": "^8.4.6",
-    "@storybook/addon-links": "^8.4.6",
-    "@storybook/builder-vite": "^8.4.6",
-    "@storybook/vue3": "^8.4.6",
     "sass": "^1.81.0",
     "typescript": "5.6.3",
     "vue-tsc": "2.1.10"

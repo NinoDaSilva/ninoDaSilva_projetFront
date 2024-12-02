@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxtjs/storybook'],
+  modules: ['@nuxt/eslint'],
   css: ['@/assets/scss/main.scss'],
   components: [
     { path: '~/components/', pathPrefix: false },
