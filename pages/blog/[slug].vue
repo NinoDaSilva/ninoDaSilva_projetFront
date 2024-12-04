@@ -11,9 +11,9 @@ if (!post.value) {
 }
 
 useSeoMeta({
-    title: `${post.value.title} | Blog`,
+    title: post.value.seo.title ? `${post.value.seo.title} | Blog` : `${post.value.title} | Blog`,
     description: 'Retrouvez nos articles sur vos habitudes !',
-    ogTitle: post.value.title,
+    ogTitle: post.value.seo.title ? post.value.seo.title : post.value.title,
     ogDescription: 'Retrouvez nos articles sur vos habitudes !',
     ogImage: '/'
 })
