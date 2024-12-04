@@ -76,12 +76,12 @@ const { data: posts } = await useSanityQuery<SanityDocument[]>(
         <div v-else>
             <p>Aucun article</p>
         </div>
-    </main>
-    <div>
-        <p>Page {{ page }} <span>/ {{ totalPages }}</span></p>
-        <div v-if="totalPages > 1">
-            <p>Pages :</p>
-            <div v-for="n in totalPages" :key="n" @click="onPageClick(n)">{{ n }}</div>
+        <div>
+            <p>Page {{ page }} <span>/ {{ totalPages }}</span></p>
+            <div v-if="totalPages > 1">
+                <p>Pages :</p>
+                <div v-for="n in totalPages" :key="n" @click="onPageClick(n)">{{ n }}</div>
+            </div>
         </div>
-    </div>
+    </main>
 </template>
