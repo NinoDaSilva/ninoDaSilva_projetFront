@@ -9,6 +9,14 @@ const { data: post } = await useSanityQuery<SanityDocument>(POST_QUERY, { slug: 
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Le post est introuvable'})
 }
+
+useSeoMeta({
+    title: `${post.value.title} | Blog`,
+    description: 'Retrouvez nos articles sur vos habitudes !',
+    ogTitle: post.value.title,
+    ogDescription: 'Retrouvez nos articles sur vos habitudes !',
+    ogImage: '/'
+})
 </script>
 
 <template>

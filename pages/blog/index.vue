@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import type { SanityDocument } from "@sanity/client";
 
+useSeoMeta({
+    title: 'Blog | Habits app',
+    description: 'Retrouvez nos articles sur vos habitudes !',
+    ogTitle: 'Blog | Habits app',
+    ogDescription: 'Retrouvez nos articles sur vos habitudes !',
+    ogImage: '/'
+})
+
 const perPage = 2;
 const page = ref(1);
 function onPageClick(index: number) {
