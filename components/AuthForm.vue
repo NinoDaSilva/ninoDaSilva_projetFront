@@ -65,9 +65,15 @@ async function onSubmit(event: Event) {
             <FormInput v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
                 v-model="password" placeholder="Confirmez votre mot de passe" />
 
+            <!-- Gestion des erreurs -->
+            <div v-if="error" class="auth-form__error">
+                {{ error }}
+            </div>
+
             <Cbutton :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
         </form>
 
+        <!-- Lien pour changer de mode -->
         <div class="auth-form__switch">
             {{ isSignUp ? 'Vous avez un compte ?' : 'Pas encore inscrit ?' }}
             <a href="#" @click.prevent="switchMode">
@@ -124,6 +130,11 @@ async function onSubmit(event: Event) {
                 color: $BlueDarkest;
             }
         }
+    }
+
+    &__error {
+        font-size: rem(14px);
+        color: $RedBase;
     }
 }
 </style>
