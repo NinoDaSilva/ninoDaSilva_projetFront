@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Cbutton from './Cbutton.vue';
-
 const props = defineProps<{
     isSignUp: boolean,
 }>();
@@ -37,7 +35,7 @@ v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username"
 v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
                 placeholder="Confirmez votre mot de passe" />
 
-            <Cbutton :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
+            <Button :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
         </form>
 
         <div class="auth-form__switch">
