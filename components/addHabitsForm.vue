@@ -10,22 +10,10 @@ const emit = defineEmits(['habit:created']);
 
 async function onSubmit() {
     try {
-        const response = await fetch(`http://localhost:4000/habits`, {
+        await useTrackingApi('/habits', {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${useCookie('api_tracking_jwt').value}`
-            },
-            body: JSON.stringify({
-                title: title.value,
-                description: description.value
-            }),
-        });
-
-        if (!response.ok) throw new Error('Une erreur est survenue')
-        // On récupère la partie json de la réponse
-        await response.json()
-        // On stocke le token dans un cookie
+            body: { title: title.value, description: description.value}
+        })
         emit('habit:created')
 
     } catch (err) {
