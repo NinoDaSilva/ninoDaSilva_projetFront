@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { errorMessages } from 'vue/compiler-sfc';
 import Cbutton from './Cbutton.vue';
 
 defineProps<{
@@ -8,23 +9,46 @@ const isSignUp = ref(true);
 // Fonction pour basculer entre les deux états
 const switchMode = () => {
     isSignUp.value = !isSignUp.value;
+
+    // Redirection vers la bonne page
+    const targetRoute = isSignUp.value ? '/register' : '/login';
+    router.push(targetRoute);
 };
 
 // Gestion de l'envoie
 const username = ref('');
 const password = ref('');
 const email = ref('');
+const error = ref('');
+
+const router = useRouter();
 
 async function onSubmit(event: Event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const response = await fetch('http://localhost:4000/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    })
-        .then(response => response.text())
-        .catch(error => console.error('Erreur de connexion:', error));
+    try {
+        const route = isSignUp.value ? '/auth/register' : '/auth/login';
+
+        const response = await fetch(`http://localhost:4000/${route}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
+        })
+
+        if (!response.ok) throw new Error('Une erreur est survenue')
+        // On récupère la partie json de la réponse
+        const data = await response.json()
+        // On stocke le token dans un cookie
+        const cookieJwt = useCookie('api_tracking_jwt')
+        cookieJwt.value = data.token
+
+        await router.push('/app/dashboard')
+    } catch (err) {
+        error.value = "Une erreur est survenue"
+    }
 }
 </script>
 
