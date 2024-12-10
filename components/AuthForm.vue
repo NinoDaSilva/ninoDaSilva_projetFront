@@ -46,6 +46,7 @@ async function onSubmit(event: Event) {
 
         await router.push('/app/dashboard');
     } catch (err) {
+        console.log(err);
         error.value = "Une erreur est survenue";
     }
 }
@@ -55,14 +56,18 @@ async function onSubmit(event: Event) {
     <div class="auth-form">
         <h1 class="auth-form__title">{{ isSignUp ? 'Inscription' : 'Connexion' }}</h1>
         <form class="auth-form__form" @submit="onSubmit">
-            <FormInput label="Nom d'utilisateur" type="text" name="username" v-model="username"
+            <FormInput
+v-model="username" label="Nom d'utilisateur" type="text" name="username"
                 placeholder="Entrez votre nom d'utilisateur" required />
-            <FormInput v-if="isSignUp" label="Adresse email" type="email" name="email" v-model="email"
+            <FormInput
+v-if="isSignUp" v-model="email" label="Adresse email" type="email" name="email"
                 placeholder="Entrez votre email" required />
-            <FormInput label="Mot de passe" type="password" name="password" v-model="password"
+            <FormInput
+v-model="password" label="Mot de passe" type="password" name="password"
                 placeholder="Entrez votre mot de passe" required />
-            <FormInput v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
-                v-model="password" placeholder="Confirmez votre mot de passe" required />
+            <FormInput
+v-if="isSignUp" v-model="password" label="Confirmer le mot de passe" type="password"
+                name="confirmPassword" placeholder="Confirmez votre mot de passe" required />
 
             <!-- Gestion des erreurs -->
             <div v-if="error" class="auth-form__error">
