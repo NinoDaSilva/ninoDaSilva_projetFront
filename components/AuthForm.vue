@@ -1,41 +1,41 @@
 <script setup lang="ts">
+import Cbutton from './Cbutton.vue';
+
 const props = defineProps<{
     isSignUp: boolean,
 }>();
-const emit = defineEmits(['update:isSignUp', 'submit']);
-
+const isSignUp = ref(true);
 // Fonction pour basculer entre les deux états
 const switchMode = () => {
-    emit('update:isSignUp', !props.isSignUp);
+    isSignUp.value = !isSignUp.value;
 };
 
-// Gestion de l'envoie du formulaire
-const handleSubmit = (event: Event) => {
-    event.preventDefault();
-    emit('submit', props.isSignUp ? 'Inscription' : 'Connexion');
-    if (props.isSignUp) {
-        console.log('Inscription');
-    } else {
-        console.log('Connexion');
-    }
-};
+// Gestion de l'envoie
+const username = ref('');
+const password = ref('');
+const email = ref('');
+
+async function onSubmit(event: Event) {
+    event.preventDefault()
+
+}
 </script>
 
 <template>
     <div class="auth-form">
         <h1 class="auth-form__title">{{ isSignUp ? 'Inscription' : 'Connexion' }}</h1>
-        <form class="auth-form__form" @submit="handleSubmit">
-            <FormInput
-v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username"
+        <form class="auth-form__form" @submit="onSubmit">
+            <FormInput v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username" v-model="username"
                 placeholder="Entrez votre nom d'utilisateur" />
 
-            <FormInput label="Adresse email" type="email" name="email" placeholder="Entrez votre email" />
-            <FormInput label="Mot de passe" type="password" name="password" placeholder="Entrez votre mot de passe" />
-            <FormInput
-v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
-                placeholder="Confirmez votre mot de passe" />
+            <FormInput label="Adresse email" type="email" name="email" v-model="email"
+                placeholder="Entrez votre email" />
+            <FormInput label="Mot de passe" type="password" name="password" v-model="password"
+                placeholder="Entrez votre mot de passe" />
+            <FormInput v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
+                v-model="password" placeholder="Confirmez votre mot de passe" />
 
-            <Button :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
+            <Cbutton :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
         </form>
 
         <div class="auth-form__switch">
