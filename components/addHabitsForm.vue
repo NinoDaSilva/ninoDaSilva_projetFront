@@ -6,6 +6,8 @@ const title = ref('');
 const description = ref('');
 const error = ref('');
 
+const emit = defineEmits(['habit:created']);
+
 async function onSubmit() {
     try {
         const response = await fetch(`http://localhost:4000/habits`, {
