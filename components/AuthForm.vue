@@ -26,7 +26,7 @@ async function onSubmit(event: Event) {
     event.preventDefault();
 
     try {
-        const route = isSignUp.value ? '/auth/register' : '/auth/login';
+        const route = isSignUp.value ? 'auth/register' : 'auth/login';
 
         const response = await fetch(`http://localhost:4000/${route}`, {
             method: 'POST',
@@ -56,17 +56,13 @@ async function onSubmit(event: Event) {
     <div class="auth-form">
         <h1 class="auth-form__title">{{ isSignUp ? 'Inscription' : 'Connexion' }}</h1>
         <form class="auth-form__form" @submit="onSubmit">
-            <FormInput
-v-model="username" label="Nom d'utilisateur" type="text" name="username"
+            <FormInput v-model="username" label="Nom d'utilisateur" type="text" name="username"
                 placeholder="Entrez votre nom d'utilisateur" required />
-            <FormInput
-v-if="isSignUp" v-model="email" label="Adresse email" type="email" name="email"
+            <FormInput v-if="isSignUp" v-model="email" label="Adresse email" type="email" name="email"
                 placeholder="Entrez votre email" required />
-            <FormInput
-v-model="password" label="Mot de passe" type="password" name="password"
+            <FormInput v-model="password" label="Mot de passe" type="password" name="password"
                 placeholder="Entrez votre mot de passe" required />
-            <FormInput
-v-if="isSignUp" v-model="password" label="Confirmer le mot de passe" type="password"
+            <FormInput v-if="isSignUp" v-model="password" label="Confirmer le mot de passe" type="password"
                 name="confirmPassword" placeholder="Confirmez votre mot de passe" required />
 
             <!-- Gestion des erreurs -->
