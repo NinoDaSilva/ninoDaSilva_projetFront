@@ -2,10 +2,12 @@
 import { errorMessages } from 'vue/compiler-sfc';
 import Cbutton from './Cbutton.vue';
 
-defineProps<{
+const props = defineProps<{
     isSignUp: boolean,
 }>();
-const isSignUp = ref(true);
+const isSignUp = ref(props.isSignUp);
+const router = useRouter();
+
 // Fonction pour basculer entre les deux états
 const switchMode = () => {
     isSignUp.value = !isSignUp.value;
@@ -21,8 +23,6 @@ const password = ref('');
 const email = ref('');
 const error = ref('');
 
-const router = useRouter();
-
 async function onSubmit(event: Event) {
     event.preventDefault();
 
@@ -35,19 +35,19 @@ async function onSubmit(event: Event) {
             body: JSON.stringify({
                 username: username.value,
                 password: password.value
-            })
-        })
+            }),
+        });
 
         if (!response.ok) throw new Error('Une erreur est survenue')
         // On récupère la partie json de la réponse
         const data = await response.json()
         // On stocke le token dans un cookie
         const cookieJwt = useCookie('api_tracking_jwt')
-        cookieJwt.value = data.token
+        cookieJwt.value = data.token;
 
-        await router.push('/app/dashboard')
+        await router.push('/app/dashboard');
     } catch (err) {
-        error.value = "Une erreur est survenue"
+        error.value = "Une erreur est survenue";
     }
 }
 </script>
