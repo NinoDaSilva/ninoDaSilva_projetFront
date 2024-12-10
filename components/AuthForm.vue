@@ -1,43 +1,83 @@
 <script setup lang="ts">
+import Cbutton from './Cbutton.vue';
+
 const props = defineProps<{
     isSignUp: boolean,
 }>();
-const emit = defineEmits(['update:isSignUp', 'submit']);
+const isSignUp = ref(props.isSignUp);
+const router = useRouter();
 
 // Fonction pour basculer entre les deux états
 const switchMode = () => {
-    emit('update:isSignUp', !props.isSignUp);
+    isSignUp.value = !isSignUp.value;
+
+    // Redirection vers la bonne page
+    const targetRoute = isSignUp.value ? '/register' : '/login';
+    router.push(targetRoute);
 };
 
-// Gestion de l'envoie du formulaire
-const handleSubmit = (event: Event) => {
+// Gestion de l'envoie
+const username = ref('');
+const password = ref('');
+const email = ref('');
+const error = ref('');
+
+async function onSubmit(event: Event) {
     event.preventDefault();
-    emit('submit', props.isSignUp ? 'Inscription' : 'Connexion');
-    if (props.isSignUp) {
-        console.log('Inscription');
-    } else {
-        console.log('Connexion');
+
+    try {
+        const route = isSignUp.value ? '/auth/register' : '/auth/login';
+
+        const response = await fetch(`http://localhost:4000/${route}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            }),
+        });
+
+        if (!response.ok) throw new Error('Une erreur est survenue')
+        // On récupère la partie json de la réponse
+        const data = await response.json()
+        // On stocke le token dans un cookie
+        const cookieJwt = useCookie('api_tracking_jwt')
+        cookieJwt.value = data.token;
+
+        await router.push('/app/dashboard');
+    } catch (err) {
+        console.log(err);
+        error.value = "Une erreur est survenue";
     }
-};
+}
 </script>
 
 <template>
     <div class="auth-form">
         <h1 class="auth-form__title">{{ isSignUp ? 'Inscription' : 'Connexion' }}</h1>
-        <form class="auth-form__form" @submit="handleSubmit">
+        <form class="auth-form__form" @submit="onSubmit">
             <FormInput
-v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username"
-                placeholder="Entrez votre nom d'utilisateur" />
-
-            <FormInput label="Adresse email" type="email" name="email" placeholder="Entrez votre email" />
-            <FormInput label="Mot de passe" type="password" name="password" placeholder="Entrez votre mot de passe" />
+v-model="username" label="Nom d'utilisateur" type="text" name="username"
+                placeholder="Entrez votre nom d'utilisateur" required />
             <FormInput
-v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmPassword"
-                placeholder="Confirmez votre mot de passe" />
+v-if="isSignUp" v-model="email" label="Adresse email" type="email" name="email"
+                placeholder="Entrez votre email" required />
+            <FormInput
+v-model="password" label="Mot de passe" type="password" name="password"
+                placeholder="Entrez votre mot de passe" required />
+            <FormInput
+v-if="isSignUp" v-model="password" label="Confirmer le mot de passe" type="password"
+                name="confirmPassword" placeholder="Confirmez votre mot de passe" required />
 
-            <Button :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
+            <!-- Gestion des erreurs -->
+            <div v-if="error" class="auth-form__error">
+                {{ error }}
+            </div>
+
+            <Cbutton :label="isSignUp ? 'S\'inscrire' : 'Se connecter'" variant="primary" class="auth-form__submit" />
         </form>
 
+        <!-- Lien pour changer de mode -->
         <div class="auth-form__switch">
             {{ isSignUp ? 'Vous avez un compte ?' : 'Pas encore inscrit ?' }}
             <a href="#" @click.prevent="switchMode">
@@ -94,6 +134,11 @@ v-if="isSignUp" label="Confirmer le mot de passe" type="password" name="confirmP
                 color: $BlueDarkest;
             }
         }
+    }
+
+    &__error {
+        font-size: rem(14px);
+        color: $RedBase;
     }
 }
 </style>

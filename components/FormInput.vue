@@ -5,6 +5,7 @@ defineProps<{
     name: string,
     placeholder: string,
     disabled?: boolean,
+    required?: boolean,
 }>();
 </script>
 
@@ -12,7 +13,7 @@ defineProps<{
     <div class="form-input">
         <label :for="name" class="form-input__label">{{ label }}</label>
         <input
-:id="name" :type="type" :name="name" :placeholder="placeholder" :class="{
+:id="name" :type="type" :name="name" :placeholder="placeholder" :required="required" :class="{
             'form-input__input': true,
             '-disabled': disabled,
         }">
