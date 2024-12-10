@@ -18,6 +18,13 @@ const email = ref('');
 async function onSubmit(event: Event) {
     event.preventDefault()
 
+    const response = await fetch('http://localhost:4000/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    })
+        .then(response => response.text())
+        .catch(error => console.error('Erreur de connexion:', error));
 }
 </script>
 
@@ -25,10 +32,9 @@ async function onSubmit(event: Event) {
     <div class="auth-form">
         <h1 class="auth-form__title">{{ isSignUp ? 'Inscription' : 'Connexion' }}</h1>
         <form class="auth-form__form" @submit="onSubmit">
-            <FormInput v-if="isSignUp" label="Nom d'utilisateur" type="text" name="username" v-model="username"
+            <FormInput label="Nom d'utilisateur" type="text" name="username" v-model="username"
                 placeholder="Entrez votre nom d'utilisateur" />
-
-            <FormInput label="Adresse email" type="email" name="email" v-model="email"
+            <FormInput v-if="isSignUp" label="Adresse email" type="email" name="email" v-model="email"
                 placeholder="Entrez votre email" />
             <FormInput label="Mot de passe" type="password" name="password" v-model="password"
                 placeholder="Entrez votre mot de passe" />
