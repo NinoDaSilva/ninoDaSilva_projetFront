@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Cbutton from './Cbutton.vue';
 
-const props = defineProps<{
+defineProps<{
     isSignUp: boolean,
 }>();
 const isSignUp = ref(true);
