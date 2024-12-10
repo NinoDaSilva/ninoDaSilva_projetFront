@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     projectId: "4hf66nwd",
     dataset: "production",
   },
+  runtimeConfig: {
+    public: {
+      apiTrackingBaseUrl: ''
+    }
+  },
   css: ['@/assets/scss/main.scss'],
   components: [
     { path: '~/components/', pathPrefix: false },
