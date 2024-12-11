@@ -7,7 +7,7 @@ defineProps<{
     backgroundImg?: string,
     buttonLabel?: string,
     buttonVariant?: "primary" | "outline",
-    showButton: Boolean,
+    showButton: boolean,
 }>();
 </script>
 
@@ -19,6 +19,7 @@ defineProps<{
             <Cbutton v-if="showButton" :label="buttonLabel" :variant="buttonVariant" class="hero__button" />
         </div>
     </section>
+    <slot name="stats"></slot>
 </template>
 
 <style lang="scss">
@@ -29,31 +30,32 @@ defineProps<{
     text-align: center;
     background-size: cover;
     background-position: center;
-    padding: 2rem;
+    padding: 1rem;
     max-width: 100%;
     height: auto;
+    min-height: 40vh;
 
     &__content {
         max-width: 600px;
         color: $SkyWhite;
-        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     &__title {
-        font-size: rem(20px);
+        font-size: rem(26px);
         font-weight: bold;
         margin-bottom: 1rem;
+        
     }
 
     &__text {
-        font-size: rem(18px);
+        font-size: rem(15px);
         margin-bottom: rem(32px);
-        line-height: 1.6;
+        line-height: 1.1;
     }
 
     &__button {
-        margin-top: rem(16px);
-        display: inline-block;
+        margin-top: rem(5px);
     }
 }
 </style>
