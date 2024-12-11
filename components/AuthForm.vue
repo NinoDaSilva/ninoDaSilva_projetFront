@@ -19,6 +19,7 @@ const switchMode = () => {
 // Gestion de l'envoie
 const username = ref('');
 const password = ref('');
+const confirmPassword = ref('');
 const email = ref('');
 const error = ref('');
 
@@ -62,7 +63,7 @@ async function onSubmit(event: Event) {
                 placeholder="Entrez votre email" required />
             <FormInput v-model="password" label="Mot de passe" type="password" name="password"
                 placeholder="Entrez votre mot de passe" required />
-            <FormInput v-if="isSignUp" v-model="password" label="Confirmer le mot de passe" type="password"
+            <FormInput v-if="isSignUp" v-model="confirmPassword" label="Confirmer le mot de passe" type="password"
                 name="confirmPassword" placeholder="Confirmez votre mot de passe" required />
 
             <!-- Gestion des erreurs -->
