@@ -6,16 +6,18 @@ const title = ref('');
 const description = ref('');
 const error = ref('');
 
-const emit = defineEmits(['habit:created']);
+const emit = defineEmits(['habit:create']);
 
 async function onSubmit() {
     try {
         await useTrackingApi('/habits', {
             method: 'POST',
-            body: { title: title.value, description: description.value}
+            body: { title: title.value, description: description.value }
         })
-        emit('habit:created')
-
+        // Emmettre l'événement pour créer l'habitude
+        emit('habit:create')
+        title.value = '';
+        description.value = '';
     } catch (err) {
         console.log(err);
         error.value = "Une erreur est survenue";
@@ -26,9 +28,9 @@ async function onSubmit() {
 <template>
     <div class="auth-form">
         <h1 class="auth-form__title">Ajouter une habitude</h1>
-        <form class="auth-form__form" @submit="onSubmit">
-            <FormInput v-model="title" label="Titre de l'habitude" type="text" name="title"
-                placeholder="Titre" required />
+        <form class="auth-form__form" @submit.prevent="onSubmit">
+            <FormInput v-model="title" label="Titre de l'habitude" type="text" name="title" placeholder="Titre"
+                required />
             <FormInput v-model="description" label="Description" type="text" name="description"
                 placeholder="Description" required />
             <!-- Gestion des erreurs -->
@@ -36,7 +38,7 @@ async function onSubmit() {
                 {{ error }}
             </div>
 
-            <Cbutton label="Ajouter" variant="primary" class="auth-form__submit" />
+            <Cbutton type="submit" label="Ajouter" variant="primary" class="auth-form__submit" />
         </form>
     </div>
 </template>
