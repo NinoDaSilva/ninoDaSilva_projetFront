@@ -1,15 +1,18 @@
-export default async function (endpoint: string, { method, body }: {
-    method: 'GET' | 'POST' | 'DELETE' | 'PUT', 
+export default async function (endpoint: string, {method, body, auth = true }: {
+    method: 'GET' | 'POST' | 'DELETE' | 'PUT',
     body?: { [key: string]: string }
+    auth?: boolean
 }) {
-    try {
-        const config = useRuntimeConfig()
 
-        const response = await fetch(`${config.public.apiTrackingBaseUrl}${endpoint}`, {
+    try {
+
+        const config = useRuntimeConfig().public
+
+        const response = await fetch(`${config.apiTrackingBaseUrl}${endpoint}`, {
             method,
             headers: {
                 'content-type': 'application/json',
-                Authorization: `Bearer ${useCookie('api_tracking_jwt').value}`
+                ...auth && { Authorization: `Bearer ${useCookie('api_tracking_jwt').value}` }
             },
             ...body && {
                 body: JSON.stringify(body)
@@ -19,6 +22,7 @@ export default async function (endpoint: string, { method, body }: {
         if (!response.ok) throw new Error('Une erreur est survenue')
 
         return await response.json()
+
     } catch (err) {
         return err
     }
