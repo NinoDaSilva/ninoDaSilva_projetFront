@@ -27,10 +27,15 @@ async function onHabitCreate() {
 
             <div>
                 <h3>Habitudes personnelles</h3>
-                <ul>
-                    <li v-for="item of data.personalHabits" :key="item.id">{{ item.title }} : {{ item.description }}</li>
-                </ul>
-                <p v-if="data.personalHabits.length == 0">Aucune habitude enregistrée</p>
+                <div class="habits-card">
+                    <ul class="habits-card__list">
+                        <li class="habits-card__item" v-for="item of data.personalHabits" :key="item.id">
+                            <p class="habits-card__title">{{ item.title }}</p> 
+                            <p class="habits-card__description">{{ item.description }}</p>
+                        </li>
+                    </ul>
+                    <p class="habits-card__info" v-if="data.personalHabits.length == 0">Aucune habitude enregistrée</p>
+                </div>
             </div>
 
 
@@ -46,3 +51,13 @@ async function onHabitCreate() {
         </div>
     </div>
 </template>
+
+<style lang="scss">
+.habits-card {
+    padding: 10px;
+
+    &__list {
+        background-color: gradient();
+    }
+}
+</style>
