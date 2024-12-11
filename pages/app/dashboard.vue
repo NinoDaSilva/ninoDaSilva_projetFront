@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import addHabitsForm from '~/components/addHabitsForm.vue';
+import HabitsCard from '~/components/HabitsCard.vue';
 
 const error = ref<string>('');
 
 const { data, refresh } = await useAsyncData('dashboard', async () => {
-    return await useTrackingApi('/dashboard', { method: 'GET'});
+    return await useTrackingApi('/dashboard', { method: 'GET' });
 })
 
 async function onHabitCreate() {
@@ -13,31 +14,19 @@ async function onHabitCreate() {
 </script>
 
 <template>
-    <div>
-        <h1>Dashboard</h1>
+    <div class="habits">
+        <h1 class="habits__title">Dashboard</h1>
 
-        <div v-if="data">
-            <div>
-                <h3>Habitudes générales</h3>
-                <ul>
-                    <li v-for="item of data.globalHabits" :key="item.id">{{ item.title }} : {{ item.description }}</li>
-                </ul>
-                <p v-if="data.globalHabits.length == 0">Aucune habitude enregistrée</p>
+        <div v-if="data" class="habits__container">
+            <div class="habits__wrapper">
+                <h3 class="habits__title--subheading">Habitudes générales</h3>
+                <HabitsCard type="globalHabits" />
             </div>
 
-            <div>
-                <h3>Habitudes personnelles</h3>
-                <div class="habits-card">
-                    <ul class="habits-card__list">
-                        <li class="habits-card__item" v-for="item of data.personalHabits" :key="item.id">
-                            <p class="habits-card__title">{{ item.title }}</p> 
-                            <p class="habits-card__description">{{ item.description }}</p>
-                        </li>
-                    </ul>
-                    <p class="habits-card__info" v-if="data.personalHabits.length == 0">Aucune habitude enregistrée</p>
-                </div>
+            <div class="habits__wrapper">
+                <h3 class="habits__title--subheading">Habitudes personnelles</h3>
+                <HabitsCard type="personalHabits" />
             </div>
-
 
             <addHabitsForm @habit:create="onHabitCreate()" />
         </div>
@@ -53,11 +42,11 @@ async function onHabitCreate() {
 </template>
 
 <style lang="scss">
-.habits-card {
-    padding: 10px;
+.habits {
+    padding: 5%;
 
-    &__list {
-        background-color: gradient();
+    &__title {
+        color: $PrimaryBase;
     }
 }
 </style>
