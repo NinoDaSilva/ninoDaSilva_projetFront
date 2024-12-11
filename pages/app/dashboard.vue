@@ -17,29 +17,32 @@ async function onHabitCreate() {
         <h1>Dashboard</h1>
 
         <div v-if="data">
-            <p>Habitudes générales</p>
-            <ul>
-                <li v-for="item of data.globalHabits" :key="item.id">{{ item.title }} : {{ item.description }}</li>
-            </ul>
+            <div>
+                <h3>Habitudes générales</h3>
+                <ul>
+                    <li v-for="item of data.globalHabits" :key="item.id">{{ item.title }} : {{ item.description }}</li>
+                </ul>
+                <p v-if="data.globalHabits.length == 0">Aucune habitude enregistrée</p>
+            </div>
 
-            <p>Habitudes personnelles</p>
-            <ul>
-                <li v-for="item of data.personalHabits" :key="item.id">{{ item.title }} : {{ item.description }}</li>
-            </ul>
+            <div>
+                <h3>Habitudes personnelles</h3>
+                <ul>
+                    <li v-for="item of data.personalHabits" :key="item.id">{{ item.title }} : {{ item.description }}</li>
+                </ul>
+                <p v-if="data.personalHabits.length == 0">Aucune habitude enregistrée</p>
+            </div>
 
-            <AddHabitForm @habit:create="onHabitCreate()" />
+
+            <addHabitsForm @habit:create="onHabitCreate()" />
         </div>
 
-        <div v-if="error">
+        <div v-else-if="error">
             <p>{{ error }}</p>
         </div>
 
         <div v-else>
             <p>Chargement...</p>
-        </div>
-
-        <div>
-            <addHabitsForm @habit:create="onHabitCreate()"/>
         </div>
     </div>
 </template>
