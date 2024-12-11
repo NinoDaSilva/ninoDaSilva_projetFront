@@ -45,13 +45,18 @@ defineProps<{
         font-size: rem(26px);
         font-weight: bold;
         margin-bottom: 1rem;
-        
+        @include small-up {
+            font-size: rem(40px);
+        }
     }
 
     &__text {
         font-size: rem(15px);
         margin-bottom: rem(32px);
         line-height: 1.1;
+        @include small-up {
+            font-size: rem(18px);
+        }
     }
 
     &__button {
