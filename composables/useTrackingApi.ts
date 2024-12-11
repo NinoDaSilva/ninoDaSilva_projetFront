@@ -18,7 +18,7 @@ export default async function (endpoint: string, { method, body }: {
 
         if (!response.ok) throw new Error('Une erreur est survenue')
 
-        await response.json()
+        return await response.json()
     } catch (err) {
         return null
     }

@@ -39,7 +39,7 @@ async function onHabitCreate() {
         </div>
 
         <div>
-            <addHabitsForm />
+            <addHabitsForm @habit:create="onHabitCreate()"/>
         </div>
     </div>
 </template>
