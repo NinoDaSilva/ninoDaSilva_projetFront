@@ -35,7 +35,7 @@ useSeoMeta({
         <template #stats>
             <div class="hero-stats">
                 <ul v-if="homepage.hero.stats" class="hero-stats__list">
-                    <li class="hero-stats__item" v-for="stat in homepage.hero.stats">
+                    <li class="hero-stats__item" v-for="stat in homepage.hero.stats" :key="stat">
                         <span class="hero-stats__value">{{ stat.value }}</span>
                         <p class="hero-stats__label">{{ stat.text }}</p>
                     </li>
