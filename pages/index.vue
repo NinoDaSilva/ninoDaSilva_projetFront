@@ -13,7 +13,7 @@ const { projectId, dataset } = useSanity().client.config();
 const urlFor = (source: SanityImageSource) =>
     projectId && dataset
         ? imageUrlBuilder({ projectId, dataset }).image(source).url()
-        : null;
+        : "https://placehold.co/600x400";
 
 const backgroundImgUrl = computed(() =>
     homepage.value?.hero?.backgroundImg ? urlFor(homepage.value.hero.backgroundImg) : "https://placehold.co/600x400"
@@ -31,5 +31,17 @@ useSeoMeta({
 <template>
     <Hero v-if="homepage" :showButton="homepage.hero.showButton" :buttonLabel="homepage.hero.buttonLabel"
         buttonVariant="primary" :title="homepage.hero.title" :text="homepage.hero.text"
-        :backgroundImg="backgroundImgUrl" />
+        :backgroundImg="backgroundImgUrl">
+        <template #stats>
+            <ul v-if="homepage.hero.stats" class="hero-stats__list">
+                <li class="hero-stats__item" v-for="stat in homepage.hero.stats">
+                    <span class="hero-stats__value">{{ stat.value }}</span>
+                    <p class="hero-stats__label">{{ stat.text }}</p>
+                </li>
+            </ul>
+        </template>
+    </Hero>
 </template>
+
+<style lang="scss">
+</style>
