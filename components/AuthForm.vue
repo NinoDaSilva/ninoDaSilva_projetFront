@@ -51,6 +51,15 @@ async function onSubmit(event: Event) {
         error.value = "Une erreur est survenue";
     }
 }
+
+onMounted(() => {
+  const cookieJwt = useCookie('api_tracking_jwt');
+  
+  // Si le token existe, redirigez l'utilisateur vers dashboard
+  if (cookieJwt.value) {
+    router.push('/app/dashboard');
+  }
+});
 </script>
 
 <template>
