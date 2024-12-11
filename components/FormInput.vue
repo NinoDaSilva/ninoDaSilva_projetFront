@@ -16,7 +16,7 @@ const emit = defineEmits(['update:modelValue']);
 <template>
     <div class="form-input">
         <label :for="name" class="form-input__label">{{ label }}</label>
-        <input :id="name" :type="type" :name="name" :placeholder="placeholder" :required="required" :value="modelValue" @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" :class="{
+        <input :id="name" :type="type" :name="name" :placeholder="placeholder" :required="required" :value="modelValue" @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)" :class="{
             'form-input__input': true,
             '-disabled': disabled,
         }">
