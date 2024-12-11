@@ -6,14 +6,17 @@ defineProps<{
     placeholder: string,
     disabled?: boolean,
     required?: boolean,
+    modelValue: string | number,
 }>();
+
+// Émet l'événement pour mettre à jour la valeur
+const emit = defineEmits(['update:modelValue']);
 </script>
 
 <template>
     <div class="form-input">
         <label :for="name" class="form-input__label">{{ label }}</label>
-        <input
-:id="name" :type="type" :name="name" :placeholder="placeholder" :required="required" :class="{
+        <input :id="name" :type="type" :name="name" :placeholder="placeholder" :required="required" :value="modelValue" @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" :class="{
             'form-input__input': true,
             '-disabled': disabled,
         }">
