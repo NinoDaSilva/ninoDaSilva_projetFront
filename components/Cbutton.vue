@@ -3,12 +3,12 @@ defineProps<{
     label: string,
     variant?: "primary" | "outline";
     disabled?: boolean;
+    type?: "button" | "submit" | "reset";
 }>();
 </script>
 
 <template>
-    <button
-:class="{
+    <button :type="type" :class="{
         'e-button': true,
         '-outline': variant === 'outline',
         '-disabled': disabled,
