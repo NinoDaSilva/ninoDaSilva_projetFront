@@ -31,16 +31,17 @@ onMounted(() => {
 
         <div v-if="data" class="habits__container">
             <div class="habits__wrapper">
-                <h3 class="habits__title--subheading">Habitudes générales</h3>
-                <HabitsCard type="globalHabits" />
+                <div class="habits__section">
+                    <h3 class="habits__title--subheading">Habitudes générales</h3>
+                    <HabitsCard type="globalHabits" />
+                </div>
+                <div class="habits__section">
+                    <h3 class="habits__title--subheading">Habitudes personnelles</h3>
+                    <HabitsCard type="personalHabits" />
+                </div>
             </div>
 
-            <div class="habits__wrapper">
-                <h3 class="habits__title--subheading">Habitudes personnelles</h3>
-                <HabitsCard type="personalHabits" />
-            </div>
-
-            <addHabitsForm @habit:create="onHabitCreate()" />
+            <addHabitsForm @habit:create="onHabitCreate()" class="habits__form" />
         </div>
 
         <div v-else-if="error">
@@ -56,9 +57,30 @@ onMounted(() => {
 <style lang="scss">
 .habits {
     padding: 5%;
+    max-width: rem(1650px);
+    margin: auto;
 
     &__title {
         color: $PrimaryBase;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        @include medium-up {
+            gap: 3%;
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+        }
+    }
+
+    &__form {
+        @include medium-up {
+            position: sticky;
+            top: 5rem;
+            margin-top: 20%;
+            align-self: start;
+        }
     }
 }
 </style>
