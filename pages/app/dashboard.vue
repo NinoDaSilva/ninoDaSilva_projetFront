@@ -11,6 +11,18 @@ const { data, refresh } = await useAsyncData('dashboard', async () => {
 async function onHabitCreate() {
     refresh()
 }
+
+const router = useRouter();
+
+onMounted(() => {
+    const cookieJwt = useCookie('api_tracking_jwt');
+
+    // Si le token existe, accéder à la page
+    // Sinon, ce connecter
+    if (!cookieJwt.value) {
+        router.push('/login');
+    }
+});
 </script>
 
 <template>
