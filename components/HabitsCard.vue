@@ -27,6 +27,7 @@ defineProps<{
     flex-direction: column;
     padding: 2%;
     padding-bottom: rem(50px);
+    max-width: rem(650px);
 
     &__list {
         display: grid;
