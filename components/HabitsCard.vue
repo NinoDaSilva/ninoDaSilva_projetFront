@@ -1,22 +1,23 @@
 <script setup lang="ts">
-const { data } = await useAsyncData('dashboard', async () => {
-    return await useTrackingApi('/dashboard', { method: 'GET' });
-})
+const { data: habitsData } = await useAsyncData('dashboard', async () => {
+    const result = await useTrackingApi('/dashboard', { method: 'GET' });
+    return JSON.parse(JSON.stringify(result));
+});
 
 defineProps<{
     type: string,
-}>()
+}>();
 </script>
 
 <template>
     <div class="habits-card">
-        <ul class="habits-card__list">
-            <li class="habits-card__item" v-for="item of data[type]" :key="item.id">
+        <ul class="habits-card__list" v-if="habitsData[type]">
+            <li class="habits-card__item" v-for="item in habitsData[type]" :key="item.id">
                 <p class="habits-card__title">{{ item.title }}</p>
                 <p class="habits-card__description">{{ item.description }}</p>
             </li>
         </ul>
-        <p class="habits-card__info" v-if="data[type].length == 0">Aucune habitude enregistrée</p>
+        <p class="habits-card__info" v-else>Aucune habitude enregistrée</p>
     </div>
 </template>
 
