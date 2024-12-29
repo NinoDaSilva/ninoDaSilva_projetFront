@@ -74,31 +74,31 @@ const currentYear = new Date().getFullYear();
         }
 
         &-link {
-        text-decoration: none;
-        color: white;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
 
-        &:hover {
-            text-shadow: 0 0 2px $SkyWhite;
-        }
+            &:hover {
+                text-shadow: 0 0 2px $SkyWhite;
+            }
 
-        &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background-color: $PrimaryLighter;
-            transition: width 0.4s ease-in-out;
-        }
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 0;
+                height: 2px;
+                background-color: $PrimaryLighter;
+                transition: width 0.4s ease-in-out;
+            }
 
-        &:hover::after {
-            width: 100%;
+            &:hover::after {
+                width: 100%;
+            }
         }
-    }
     }
 
     &__social {
@@ -122,6 +122,7 @@ const currentYear = new Date().getFullYear();
         font-size: rem(11px);
         margin-top: rem(60px);
         color: $SkyLightest;
+
         @include small-up {
             font-size: rem(14px);
         }

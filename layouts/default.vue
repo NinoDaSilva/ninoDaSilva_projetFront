@@ -6,7 +6,7 @@
         <MyHeader>
             <slot name="header" />
         </MyHeader>
-        <main>
+        <main class="main__container">
             <slot />
         </main>
         <MyFooter>
@@ -14,3 +14,17 @@
         </MyFooter>
     </div>
 </template>
+
+<style lang="scss">
+.main__container {
+    min-height: calc(100vh - 298px - 55px );
+    @include small-up {
+        min-height: calc(100vh - 216px - 55px - 40px);
+        padding: rem(20px);
+    }
+    @include medium-up {
+        min-height: calc(100vh - 216px - 77px - 40px);
+        padding: rem(20px);
+    }
+}
+</style>
