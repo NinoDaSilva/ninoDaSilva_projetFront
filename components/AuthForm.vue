@@ -96,7 +96,6 @@ onMounted(() => {
 <style lang="scss">
 .auth-form {
     max-width: rem(400px);
-    padding: 5%;
     background: $SkyWhite;
     border-radius: 8px;
     margin: auto;
