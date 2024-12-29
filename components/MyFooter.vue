@@ -9,34 +9,31 @@ const currentYear = new Date().getFullYear();
 <template>
     <footer class="footer">
         <nav class="footer__nav">
-            <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                    <NuxtLink class="footer-nav__link" to="/">Accueil</NuxtLink>
+            <ul class="footer__nav-list">
+                <li class="footer__nav-item">
+                    <NuxtLink class="footer__nav-link" to="/app/dashboard">Mes habitudes</NuxtLink>
                 </li>
                 <li class="footer-nav__item">
-                    <NuxtLink class="footer-nav__link" to="/habits">Mes habitudes</NuxtLink>
+                    <NuxtLink class="footer__nav-link" to="/about">À propos</NuxtLink>
                 </li>
                 <li class="footer-nav__item">
-                    <NuxtLink class="footer-nav__link" to="/about">À propos</NuxtLink>
-                </li>
-                <li class="footer-nav__item">
-                    <NuxtLink class="footer-nav__link" to="/contact">Contact</NuxtLink>
+                    <NuxtLink class="footer__nav-link" to="/contact">Contact</NuxtLink>
                 </li>
             </ul>
         </nav>
 
         <ul class="footer__social">
-            <li class="social__items">
+            <li class="footer__social-item">
                 <NuxtLink class="social__link" to="https://instagram.com" target="_blank" aria-label="Instagram">
                     <InstagramIcon />
                 </NuxtLink>
             </li>
-            <li class="social__items">
+            <li class="footer__social-item">
                 <NuxtLink class="social__link" to="https://facebook.com" target="_blank" aria-label="Facebook">
                     <FacebookIcon />
                 </NuxtLink>
             </li>
-            <li class="social__items">
+            <li class="footer__social-item">
                 <NuxtLink class="social__link" to="https://tiktok.com" target="_blank" aria-label="TikTok">
                     <TiktokIcon />
                 </NuxtLink>
@@ -55,54 +52,61 @@ const currentYear = new Date().getFullYear();
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: rem(30px) rem(20px) rem(20px) rem(20px);
+    padding: rem(30px) rem(30px) rem(20px);
     background-color: $PrimaryLight;
     color: $SkyWhite;
 
-    &__credit {
-        font-size: rem(13px);
-        margin-top: rem(35px);
-        color: $SkyLightest;
-    }
-
     &__nav {
-        margin-bottom: rem(15px);
+        margin-bottom: rem(40px);
 
-        .footer-nav__list {
+        &-list {
             display: flex;
             flex-wrap: wrap;
-            gap: rem(15px);
+            gap: rem(40px);
             font-size: rem(18px);
             justify-content: center;
 
-            .footer-nav__link {
-                text-decoration: none;
-                transition: all 0.3s ease;
-                color: $SkyWhite;
-                margin-inline: rem(20px);
+            @include small-down {
+                flex-direction: column;
+                gap: rem(25px);
+                font-size: rem(16px);
+            }
+        }
 
-                &:hover {
-                    color: $PrimaryDark;
-                }
+        &-link {
+            text-decoration: none;
+            transition: color 0.3s ease;
+            color: $SkyWhite;
+
+            &:hover {
+                color: $PrimaryDark;
             }
         }
     }
 
     &__social {
         display: flex;
-        gap: rem(25px);
+        gap: rem(35px);
 
-        .social__items {
+        &-item {
             width: rem(30px);
             height: rem(30px);
-        }
-
-        &__link {
-            color: $InkDark;
+            transition: all 0.3s ease;
+            opacity: 0.9;
 
             &:hover {
-                color: $PrimaryDark;
+                transform: scale(1.05);
+                opacity: 1;
             }
+        }
+    }
+
+    &__credit {
+        font-size: rem(11px);
+        margin-top: rem(60px);
+        color: $SkyLightest;
+        @include small-up {
+            font-size: rem(14px);
         }
     }
 }
