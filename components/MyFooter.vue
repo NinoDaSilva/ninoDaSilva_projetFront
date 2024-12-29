@@ -10,14 +10,14 @@ const currentYear = new Date().getFullYear();
     <footer class="footer">
         <nav class="footer__nav">
             <ul class="footer__nav-list">
+                <li class="footer-nav__item">
+                    <NuxtLink class="footer__nav-link" to="/">Accueil</NuxtLink>
+                </li>
                 <li class="footer__nav-item">
                     <NuxtLink class="footer__nav-link" to="/app/dashboard">Mes habitudes</NuxtLink>
                 </li>
                 <li class="footer-nav__item">
-                    <NuxtLink class="footer__nav-link" to="/about">À propos</NuxtLink>
-                </li>
-                <li class="footer-nav__item">
-                    <NuxtLink class="footer__nav-link" to="/contact">Contact</NuxtLink>
+                    <NuxtLink class="footer__nav-link" to="/blog">Blog</NuxtLink>
                 </li>
             </ul>
         </nav>
@@ -53,7 +53,7 @@ const currentYear = new Date().getFullYear();
     align-items: center;
     text-align: center;
     padding: rem(30px) rem(30px) rem(20px);
-    background-color: $PrimaryLight;
+    background-color: $PrimaryBase;
     color: $SkyWhite;
 
     &__nav {
@@ -74,14 +74,31 @@ const currentYear = new Date().getFullYear();
         }
 
         &-link {
-            text-decoration: none;
-            transition: color 0.3s ease;
-            color: $SkyWhite;
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
 
-            &:hover {
-                color: $PrimaryDark;
-            }
+        &:hover {
+            text-shadow: 0 0 2px $SkyWhite;
         }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: $PrimaryLighter;
+            transition: width 0.4s ease-in-out;
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
     }
 
     &__social {
