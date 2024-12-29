@@ -45,16 +45,15 @@ async function onSubmit() {
 
 <style lang="scss">
 .auth-form {
-    max-width: rem(400px);
     padding: 5%;
     background: $SkyWhite;
     border-radius: 8px;
     margin: auto;
 
     @include small-up() {
+        width: 100%;
         padding: rem(30px);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin: 5% auto;
     }
 
     &__title {
