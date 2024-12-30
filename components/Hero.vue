@@ -4,7 +4,7 @@ import Cbutton from '@/components/Cbutton.vue';
 defineProps<{
     title: string,
     text?: string,
-    backgroundImg?: string,
+    backgroundImg?: string | null,
     buttonLabel?: string,
     buttonVariant?: "primary" | "outline",
     showButton: boolean,
