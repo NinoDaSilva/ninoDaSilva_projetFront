@@ -40,6 +40,8 @@ useSeoMeta({
         </Hero>
 
         <section v-if="homepage.functionality" class="features">
+            <h2 class="features__title">{{ homepage.functionality.title }}</h2>
+            <p class="features__text">{{ homepage.functionality.text }}</p>
             <ul class="features__list">
                 <li v-for="(feature, index) in homepage.functionality.features" :key="index" class="features__item">
                     <FeatureCard :featureIcon="urlFor(feature.icon)" :title="feature.title" :text="feature.description" />
