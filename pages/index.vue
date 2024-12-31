@@ -31,7 +31,7 @@ const changeSlide = (index: number) => {
 <template>
     <div v-if="homepage">
         <Hero v-if="homepage.hero" :showButton="homepage.hero.showButton" :buttonLabel="homepage.hero.buttonLabel"
-            buttonVariant="primary" :title="homepage.hero.title" :text="homepage.hero.text"
+            :link="homepage.hero.buttonLink" buttonVariant="primary" :title="homepage.hero.title" :text="homepage.hero.text"
             :backgroundImg="backgroundImgUrl">
             <template #stats>
                 <div class="hero-stats">

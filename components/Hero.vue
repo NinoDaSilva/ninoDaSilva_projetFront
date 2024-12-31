@@ -8,6 +8,7 @@ defineProps<{
     buttonLabel?: string,
     buttonVariant?: "primary" | "outline",
     showButton: boolean,
+    link?: string,
 }>();
 </script>
 
@@ -16,7 +17,9 @@ defineProps<{
         <div class="hero__content">
             <h1 class="hero__title">{{ title }}</h1>
             <p class="hero__text">{{ text }}</p>
-            <Cbutton v-if="showButton" :label="buttonLabel" :variant="buttonVariant" class="hero__button" />
+            <NuxtLink v-if="showButton" :to="link">
+                <Cbutton :label="buttonLabel" :variant="buttonVariant" class="hero__button" />
+            </NuxtLink>
         </div>
     </section>
     <slot name="stats"></slot>
