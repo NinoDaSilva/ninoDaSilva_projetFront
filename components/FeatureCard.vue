@@ -13,3 +13,26 @@ defineProps<{
         <p class="feature-card__text">{{ text }}</p>
     </div>
 </template>
+
+<style lang="scss">
+.feature-card {
+    background-color: $GreenDarkest;
+    border-radius: 20px;
+    padding: rem(20px);
+    font-size: rem(13px);
+    color: $GreenLightest;
+    box-shadow: 1px 1px 4px $GreenDarkest;
+
+    &__title {
+        font-size: rem(18px);
+        margin-bottom: rem(8px);
+    }
+
+    &__img {
+        filter: brightness(100);
+        width: rem(50px);
+        height: rem(50px);
+        margin-bottom: rem(12px);
+    }
+}
+</style>
