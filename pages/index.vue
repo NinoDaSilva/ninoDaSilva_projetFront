@@ -29,7 +29,7 @@ const changeSlide = (index: number) => {
 </script>
 
 <template>
-    <div v-if="homepage">
+    <div v-if="homepage" class="home">
         <Hero v-if="homepage.hero" :showButton="homepage.hero.showButton" :buttonLabel="homepage.hero.buttonLabel"
             :link="homepage.hero.buttonLink" buttonVariant="primary" :title="homepage.hero.title" :text="homepage.hero.text"
             :backgroundImg="backgroundImgUrl">
@@ -45,49 +45,74 @@ const changeSlide = (index: number) => {
             </template>
         </Hero>
 
-        <section v-if="homepage.functionality" class="features">
-            <h2 class="features__title">{{ homepage.functionality.title }}</h2>
-            <p class="features__text">{{ homepage.functionality.text }}</p>
-            <ul class="features__list">
-                <li v-for="(feature, index) in homepage.functionality.features" :key="index" class="features__item">
-                    <FeatureCard :featureIcon="urlFor(feature.icon)" :title="feature.title"
-                        :text="feature.description" />
-                </li>
-            </ul>
-        </section>
-
-        <section v-if="homepage.pricing" class="pricing">
-            <h2 class="pricing__title">{{ homepage.pricing.title }}</h2>
-            <p class="pricing__text">{{ homepage.pricing.text }}</p>
-            <ul class="pricing__list">
-                <li v-for="(price, index) in homepage.pricing.offers" :key="index" class="pricing__item">
-                    <PricingCard :title="price.title" :price="price.price" :buttonLabel="homepage.pricing.buttonLabel"
-                        :content="price.content" />
-                </li>
-            </ul>
-        </section>
-
-        <section v-if="homepage.client" class="client">
-            <h2 class="client__title">{{ homepage.client.title }}</h2>
-            <p class="client__text">{{ homepage.client.text }}</p>
-            <div class="client__comment">
-                <div class="client__carousel">
-                    <ul class="client__list" :style="{ transform: `translateX(-${activeIndex * 100}%)` }">
-                        <li v-for="(comment, index) in homepage.client.comment" :key="index" class="client__item">
-                            <CommentCard :text="comment.text" :name="comment.name" :work="comment.work" />
-                        </li>
-                    </ul>
+        <div class="home__grp">
+            <section v-if="homepage.functionality" class="home__sct--features border-padding">
+                <h2 class="home__title">{{ homepage.functionality.title }}</h2>
+                <p class="home__text">{{ homepage.functionality.text }}</p>
+                <ul class="home__list--features">
+                    <li v-for="(feature, index) in homepage.functionality.features" :key="index" class="features__item">
+                        <FeatureCard :featureIcon="urlFor(feature.icon)" :title="feature.title"
+                            :text="feature.description" />
+                    </li>
+                </ul>
+            </section>
+            <section v-if="homepage.pricing" class="home__sct--pricing border-padding">
+                <h2 class="home__title">{{ homepage.pricing.title }}</h2>
+                <p class="home__text">{{ homepage.pricing.text }}</p>
+                <ul class="home__list--princing">
+                    <li v-for="(price, index) in homepage.pricing.offers" :key="index" class="pricing__item">
+                        <PricingCard :title="price.title" :price="price.price" :buttonLabel="homepage.pricing.buttonLabel"
+                            :content="price.content" />
+                    </li>
+                </ul>
+            </section>
+            <section v-if="homepage.client" class="home__sct client border-padding">
+                <h2 class="home__title">{{ homepage.client.title }}</h2>
+                <p class="home__text">{{ homepage.client.text }}</p>
+                <div class="client__comment">
+                    <div class="client__carousel">
+                        <ul class="client__list" :style="{ transform: `translateX(-${activeIndex * 100}%)` }">
+                            <li v-for="(comment, index) in homepage.client.comment" :key="index" class="client__item">
+                                <CommentCard :text="comment.text" :name="comment.name" :work="comment.work" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="client__pagination">
+                        <span v-for="(_, index) in homepage.client.comment" :key="index" class="client__dot"
+                            :class="{ 'client__dot--active': index === activeIndex }" @click="changeSlide(index)"></span>
+                    </div>
                 </div>
-                <div class="client__pagination">
-                    <span v-for="(_, index) in homepage.client.comment" :key="index" class="client__dot"
-                        :class="{ 'client__dot--active': index === activeIndex }" @click="changeSlide(index)"></span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 </template>
 
 <style lang="scss">
+.home {
+    &__grp {
+        display: grid;
+        gap: rem(30px);
+    }
+
+    &__title {
+        font-size: rem(20px);
+        color: $PrimaryDark;
+        margin-bottom: rem(10px);
+    }
+
+    &__text {
+        font-size: rem(15px);
+        margin-bottom: rem(15px);
+    }
+
+    &__list {
+        &--features {
+            display: grid;
+            gap: rem(10px);
+        }
+    }
+}
+
 .hero-stats {
     padding: 5%;
     color: $PrimaryDark;
