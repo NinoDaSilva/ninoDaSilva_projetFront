@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import type { SanityDocument } from "@sanity/client"
-import Hero from "@/components/Hero.vue";
-import FeatureCard from "~/components/FeatureCard.vue";
 
 const { data: homepage } = await useSanityQuery<SanityDocument>(groq`*[
 _type == "homepage"][0]`);
@@ -20,6 +18,14 @@ useSeoMeta({
     ogDescription: 'Configurez, organisez et gérer toutes vos habitudes grâce à notre application !',
     ogImage: '/'
 })
+
+// Carrousel commentaires
+const activeIndex = ref(0);
+
+// Fonction pour changer de slide
+const changeSlide = (index: number) => {
+    activeIndex.value = index;
+};
 </script>
 
 <template>
@@ -55,10 +61,28 @@ useSeoMeta({
             <p class="pricing__text">{{ homepage.pricing.text }}</p>
             <ul class="pricing__list">
                 <li v-for="(price, index) in homepage.pricing.offers" :key="index" class="pricing__item">
-                    <PricingCard :title="price.title" :price="price.price"
-                        :buttonLabel="homepage.pricing.buttonLabel" :content="price.content" />
+                    <PricingCard :title="price.title" :price="price.price" :buttonLabel="homepage.pricing.buttonLabel"
+                        :content="price.content" />
                 </li>
             </ul>
+        </section>
+
+        <section v-if="homepage.client" class="client">
+            <h2 class="client__title">{{ homepage.client.title }}</h2>
+            <p class="client__text">{{ homepage.client.text }}</p>
+            <div class="client__comment">
+                <div class="client__carousel">
+                    <ul class="client__list" :style="{ transform: `translateX(-${activeIndex * 100}%)` }">
+                        <li v-for="(comment, index) in homepage.client.comment" :key="index" class="client__item">
+                            <CommentCard :text="comment.text" :name="comment.name" :work="comment.work" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="client__pagination">
+                    <span v-for="(_, index) in homepage.client.comment" :key="index" class="client__dot"
+                        :class="{ 'client__dot--active': index === activeIndex }" @click="changeSlide(index)"></span>
+                </div>
+            </div>
         </section>
     </div>
 </template>
@@ -113,6 +137,59 @@ useSeoMeta({
             font-size: rem(20px);
             margin-top: rem(10px);
         }
+    }
+}
+
+.client {
+    &__comment {
+        position: relative;
+        overflow: hidden;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    &__carousel {
+        overflow: auto hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__list {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &__item {
+        flex: 0 0 100%;
+        justify-content: center;
+        align-items: center;
+        cursor: grab;
+        box-sizing: border-box;
+    }
+
+    &__pagination {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    &__dot--active {
+        background-color: #333;
     }
 }
 </style>
