@@ -17,6 +17,7 @@
 
 <style lang="scss">
 .main__container {
+    position: relative;
     min-height: calc(100vh - 298px - 55px);
     @include small-up {
         min-height: calc(100vh - 216px - 55px);
