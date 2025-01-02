@@ -5,7 +5,7 @@ export default function () {
     const {projectId, dataset} = useSanity().client.config();
     const urlFor = (source: SanityImageSource) => 
         projectId && dataset
-            ? imageUrlBuilder({projectId, dataset}).image(source)
+            ? imageUrlBuilder({projectId, dataset}).image(source).url()
             : null;
             
     return { urlFor }
