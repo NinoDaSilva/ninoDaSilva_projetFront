@@ -18,7 +18,7 @@ onMounted(() => {
     const cookieJwt = useCookie('api_tracking_jwt');
 
     // Si le token existe, accéder à la page
-    // Sinon, ce connecter
+    // Sinon, se connecter
     if (!cookieJwt.value) {
         router.push('/login');
     }
@@ -41,7 +41,7 @@ onMounted(() => {
                 </div>
             </div>
 
-            <addHabitsForm @habit:create="onHabitCreate()" class="habits__form" />
+            <addHabitsForm class="habits__form" @habit:create="onHabitCreate()" />
         </div>
 
         <div v-else-if="error">
@@ -67,6 +67,7 @@ onMounted(() => {
     &__container {
         display: grid;
         grid-template-columns: 1fr;
+
         @include medium-up {
             gap: 3%;
             grid-template-columns: 1fr 1fr;

@@ -22,7 +22,7 @@ defineProps<{
             </NuxtLink>
         </div>
     </section>
-    <slot name="stats"></slot>
+    <slot name="stats" />
 </template>
 
 <style lang="scss">
@@ -48,6 +48,7 @@ defineProps<{
         font-size: rem(26px);
         font-weight: bold;
         margin-bottom: 1rem;
+
         @include small-up {
             font-size: rem(40px);
         }
@@ -57,13 +58,13 @@ defineProps<{
         font-size: rem(15px);
         margin-bottom: rem(32px);
         line-height: 1.1;
+
         @include small-up {
             font-size: rem(18px);
         }
     }
 
     &__button {
-        margin-top: rem(5px);
-    }
+        margin-top: rem(5px);  }
 }
 </style>

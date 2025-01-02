@@ -4,15 +4,15 @@ defineProps<{
     price: number,
     buttonLabel?: string,
     buttonVariant?: "primary" | "outline",
-    content: string[],
+    contents: string[],
 }>()
 </script>
 
 <template>
     <div class="pricing-card">
         <h4 class="pricing-card__title">{{ title }}</h4>
-        <ul v-if="content" class="pricing-card__list">
-            <li v-for="(content, index) in content" :key="index" class="pricing-card__item">
+        <ul v-if="contents" class="pricing-card__list">
+            <li v-for="(content, index) in contents" :key="index" class="pricing-card__item">
                 {{ content }}
             </li>
         </ul>
@@ -52,7 +52,6 @@ defineProps<{
 
     &__text {
         font-size: rem(18px);
-        margin: rem(25px) 0; 
-    }
-}
+        margin: rem(25px) 0;
+    }}
 </style>
