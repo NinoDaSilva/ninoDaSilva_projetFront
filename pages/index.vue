@@ -50,7 +50,7 @@ const changeSlide = (index: number) => {
                 <h2 class="home__title">{{ homepage.functionality.title }}</h2>
                 <p class="home__text">{{ homepage.functionality.text }}</p>
                 <ul class="home__list--features">
-                    <li v-for="(feature, index) in homepage.functionality.features" :key="index" class="features__item">
+                    <li v-for="(feature, index) in homepage.functionality.features" :key="index" class="home__item--features">
                         <FeatureCard :featureIcon="urlFor(feature.icon)" :title="feature.title"
                             :text="feature.description" />
                     </li>
@@ -59,8 +59,8 @@ const changeSlide = (index: number) => {
             <section v-if="homepage.pricing" class="home__sct--pricing border-padding">
                 <h2 class="home__title">{{ homepage.pricing.title }}</h2>
                 <p class="home__text">{{ homepage.pricing.text }}</p>
-                <ul class="home__list--princing">
-                    <li v-for="(price, index) in homepage.pricing.offers" :key="index" class="pricing__item">
+                <ul class="home__list--pricing">
+                    <li v-for="(price, index) in homepage.pricing.offers" :key="index" class="home__item--pricing">
                         <PricingCard :title="price.title" :price="price.price" :buttonLabel="homepage.pricing.buttonLabel"
                             :content="price.content" />
                     </li>
@@ -132,6 +132,20 @@ const changeSlide = (index: number) => {
 
             @include small-up {
                 grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        &--pricing {
+            display: grid;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: rem(10px);
+            max-width: rem(600px);
+            margin: auto;
+
+            @include small-up {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                box-sizing: border-box;
             }
         }
     }
