@@ -20,8 +20,15 @@ const paginationEnd = computed(() => page.value * perPage);
 
 const filter = ref('');
 function onCategoryClick(category: SanityDocument) {
+    // Si le filtre actuel est déjà celui de la catégorie cliquée, on le retire
+    if (filter.value === category.slug.current) {
+        filter.value = '';
+    } else {
+        // Sinon, on applique le filtre
+        filter.value = category.slug.current;
+    }
+    // Réinitialiser la page à 1
     page.value = 1;
-    filter.value = category.slug.current;
 }
 
 const { data: categories } = await useSanityQuery<SanityDocument[]>(groq`*[
@@ -66,7 +73,8 @@ const { data: posts } = await useSanityQuery<SanityDocument[]>(
         <h1 class="blog__title">Posts</h1>
         <ul class="blog__list--categories">
             <li v-for="(category, index) in categories" :key="index" class="blog__item--category">
-                <button @click="onCategoryClick(category)" class="blog__category-btn">{{ category.title }}</button>
+                <button @click="onCategoryClick(category)" class="blog__category-btn"
+                    :class="{ active: filter === category.slug.current }">{{ category.title }}</button>
             </li>
         </ul>
         <ul v-if="posts && posts.length" class="blog__list--posts">
@@ -121,6 +129,11 @@ const { data: posts } = await useSanityQuery<SanityDocument[]>(
     }
 
     &__list {
+        &--categories {
+            display: flex;
+            gap: rem(10px);
+        }
+
         &--posts {
             display: grid;
             gap: rem(10px);
@@ -164,7 +177,8 @@ const { data: posts } = await useSanityQuery<SanityDocument[]>(
         cursor: pointer;
         transition: all 0.2s ease;
 
-        &:hover, &:focus {
+        &:hover,
+        &.active {
             color: $SkyWhite;
             background-color: $PrimaryBase;
         }
