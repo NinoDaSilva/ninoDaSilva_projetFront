@@ -92,23 +92,46 @@ const changeSlide = (index: number) => {
     &__grp {
         display: grid;
         gap: rem(30px);
+
+        @include medium-up {
+            margin-top: rem(30px);
+            gap: rem(90px);
+        }
     }
 
     &__title {
         font-size: rem(20px);
         color: $PrimaryDark;
         margin-bottom: rem(10px);
+
+        @include medium-up {
+            font-size: rem(32px);
+            text-align: center;
+            margin-bottom: rem(20px);
+        }
     }
 
     &__text {
         font-size: rem(15px);
         margin-bottom: rem(15px);
+
+        @include medium-up {
+            font-size: rem(18px);
+            text-align: center;
+            margin-bottom: rem(50px);
+        }
     }
 
     &__list {
         &--features {
             display: grid;
             gap: rem(10px);
+            max-width: rem(1200px);
+            margin: auto;
+
+            @include small-up {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
         }
     }
 }
