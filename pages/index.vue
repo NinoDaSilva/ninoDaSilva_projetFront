@@ -92,6 +92,7 @@ const changeSlide = (index: number) => {
     &__grp {
         display: grid;
         gap: rem(30px);
+        margin-top: rem(20px);
 
         @include medium-up {
             margin-top: rem(30px);
@@ -140,8 +141,7 @@ const changeSlide = (index: number) => {
     padding: 5%;
     color: $PrimaryDark;
     font-family: $SecondaryFont;
-    max-width: 1000px;
-    margin-inline: auto;
+    background-color: $SkyLighter;
 
     @include medium-up {
         padding: 2%;
@@ -153,6 +153,8 @@ const changeSlide = (index: number) => {
         justify-content: center;
         gap: 5%;
         text-align: center;
+        max-width: rem(1000px);
+        margin-inline: auto;
 
         @include xsmall-down {
             grid-template-columns: 1fr;
@@ -192,7 +194,7 @@ const changeSlide = (index: number) => {
     &__comment {
         position: relative;
         overflow: hidden;
-        max-width: 800px;
+        max-width: rem(800px);
         margin: auto;
     }
 
