@@ -18,7 +18,7 @@ onMounted(() => {
     const cookieJwt = useCookie('api_tracking_jwt');
 
     // Si le token existe, accéder à la page
-    // Sinon, ce connecter
+    // Sinon, se connecter
     if (!cookieJwt.value) {
         router.push('/login');
     }
@@ -67,6 +67,7 @@ onMounted(() => {
     &__container {
         display: grid;
         grid-template-columns: 1fr;
+
         @include medium-up {
             gap: 3%;
             grid-template-columns: 1fr 1fr;
