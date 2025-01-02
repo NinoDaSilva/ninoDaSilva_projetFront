@@ -30,13 +30,13 @@ const changeSlide = (index: number) => {
 
 <template>
     <div v-if="homepage" class="home">
-        <Hero v-if="homepage.hero" :showButton="homepage.hero.showButton" :buttonLabel="homepage.hero.buttonLabel"
-            :link="homepage.hero.buttonLink" buttonVariant="primary" :title="homepage.hero.title" :text="homepage.hero.text"
-            :backgroundImg="backgroundImgUrl">
+        <Hero v-if="homepage.hero" :show-button="homepage.hero.showButton" :button-label="homepage.hero.buttonLabel"
+            :link="homepage.hero.buttonLink" button-variant="primary" :title="homepage.hero.title"
+            :text="homepage.hero.text" :background-img="backgroundImgUrl">
             <template #stats>
                 <div class="hero-stats">
                     <ul v-if="homepage.hero.stats" class="hero-stats__list">
-                        <li class="hero-stats__item" v-for="stat in homepage.hero.stats" :key="stat">
+                        <li v-for="stat in homepage.hero.stats" :key="stat" class="hero-stats__item">
                             <span class="hero-stats__value">{{ stat.value }}</span>
                             <p class="hero-stats__label">{{ stat.text }}</p>
                         </li>
@@ -50,8 +50,9 @@ const changeSlide = (index: number) => {
                 <h2 class="home__title">{{ homepage.functionality.title }}</h2>
                 <p class="home__text">{{ homepage.functionality.text }}</p>
                 <ul class="home__list--features">
-                    <li v-for="(feature, index) in homepage.functionality.features" :key="index" class="home__item--features">
-                        <FeatureCard :featureIcon="urlFor(feature.icon)" :title="feature.title"
+                    <li v-for="(feature, index) in homepage.functionality.features" :key="index"
+                        class="home__item--features">
+                        <FeatureCard :feature-icon="urlFor(feature.icon)" :title="feature.title"
                             :text="feature.description" />
                     </li>
                 </ul>
@@ -61,8 +62,8 @@ const changeSlide = (index: number) => {
                 <p class="home__text">{{ homepage.pricing.text }}</p>
                 <ul class="home__list--pricing">
                     <li v-for="(price, index) in homepage.pricing.offers" :key="index" class="home__item--pricing">
-                        <PricingCard :title="price.title" :price="price.price" :buttonLabel="homepage.pricing.buttonLabel"
-                            :content="price.content" />
+                        <PricingCard :title="price.title" :price="price.price"
+                            :button-label="homepage.pricing.buttonLabel" :contents="price.content" />
                     </li>
                 </ul>
             </section>
@@ -79,7 +80,7 @@ const changeSlide = (index: number) => {
                     </div>
                     <div class="client__pagination">
                         <span v-for="(_, index) in homepage.client.comment" :key="index" class="client__dot"
-                            :class="{ 'client__dot--active': index === activeIndex }" @click="changeSlide(index)"></span>
+                            :class="{ 'client__dot--active': index === activeIndex }" @click="changeSlide(index)" />
                     </div>
                 </div>
             </section>

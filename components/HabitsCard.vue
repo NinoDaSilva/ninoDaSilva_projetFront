@@ -35,22 +35,22 @@ const onHabitUpdate = () => {
     isEditing.value = false;
 }
 
-const toggleSelected = (item: any) => {
+const toggleSelected = (item: { selected: boolean; }) => {
     item.selected = !item.selected;
 };
 </script>
 
 <template>
     <div class="habits-card">
-        <ul class="habits-card__list" v-if="habitsData[type]">
-            <li class="habits-card__item" v-for="item in habitsData[type]" :key="item.id"
+        <ul v-if="habitsData[type]" class="habits-card__list">
+            <li v-for="item in habitsData[type]" :key="item.id" class="habits-card__item"
                 @mouseover="item.hovered = true" @mouseleave="item.hovered = false" @click="toggleSelected(item)">
                 <div class="habits-card__content">
                     <p class="habits-card__title">{{ item.title }}</p>
                     <p class="habits-card__description">{{ item.description }}</p>
                 </div>
 
-                <div class="habits-card__actions" v-if="item.hovered || item.selected">
+                <div v-if="item.hovered || item.selected" class="habits-card__actions">
                     <button class="habits-card__btn habits-card__btn--edit" @click="onEdit(item)">
                         <PensilIcon />
                     </button>
@@ -61,7 +61,7 @@ const toggleSelected = (item: any) => {
             </li>
         </ul>
 
-        <p class="habits-card__info" v-else>Aucune habitude enregistrée</p>
+        <p v-else class="habits-card__info">Aucune habitude enregistrée</p>
 
         <UpdateHabitsForm v-if="isEditing && currentHabit" :habit="currentHabit" @habit:update="onHabitUpdate"
             @form:cancel="isEditing = false" />

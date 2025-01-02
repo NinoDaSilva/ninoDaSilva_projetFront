@@ -14,11 +14,11 @@ const toggleMenu = () => {
             <!-- Logo -->
             <!-- <div class=header__logo></div> -->
 
-            <button class="header__burger" :class="{ 'header__burger--open': isMenuOpen }" @click="toggleMenu"
-                aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="header__burger" :class="{ 'header__burger--open': isMenuOpen }"
+                aria-label="Toggle navigation" @click="toggleMenu">
+                <span />
+                <span />
+                <span />
             </button>
             <nav :class="{ 'header__menu--open': isMenuOpen }" class="header__menu">
                 <ul class="header__list">

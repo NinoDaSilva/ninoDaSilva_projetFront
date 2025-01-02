@@ -41,7 +41,7 @@ onMounted(() => {
                 </div>
             </div>
 
-            <addHabitsForm @habit:create="onHabitCreate()" class="habits__form" />
+            <addHabitsForm class="habits__form" @habit:create="onHabitCreate()" />
         </div>
 
         <div v-else-if="error">
