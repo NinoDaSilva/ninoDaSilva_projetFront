@@ -95,7 +95,7 @@ const changeSlide = (index: number) => {
         margin-top: rem(20px);
 
         @include medium-up {
-            margin-top: rem(30px);
+            margin-top: rem(50px);
             gap: rem(90px);
         }
     }
