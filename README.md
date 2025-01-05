@@ -1,75 +1,71 @@
-# Nuxt Minimal Starter
+# Habit Tracking App 📝
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Ce projet est une application web conçue pour suivre les habitudes quotidiennes. Elle offre une interface utilisateur permettant d’ajouter, de modifier et de supprimer des habitudes, tout en fournissant un suivi des tâches accomplies.
 
-## Setup
+## Fonctionnalités 🚀
 
-Make sure to install dependencies:
+- **Ajout d'habitudes** : Permet d'ajouter de nouvelles habitudes à suivre.
+- **Modification d'habitudes** : Modifiez les informations d'une habitude existante.
+- **Suppression d'habitudes** : Supprimez une habitude que vous ne souhaitez plus suivre.
+- **Blog** : Accéder à des posts de blog avec la possibilité de les filtrer en fonction de leur catégorie.
+- **Login/Signup** : Connexion ou inscription pour créer un compte utilisateur.
 
-```bash
-# npm
-npm install
+## Prérequis (dev) ⚙️
 
-# pnpm
-pnpm install
+Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre système :
 
-# yarn
-yarn install
+- [Node.js](https://nodejs.org/) (version 16 ou supérieure)
+- [Nuxt.js](https://nuxt.com/)
+- [Sanity.io](https://www.sanity.io/) (configuration pour la gestion des données, si applicable)
 
-# bun
-bun install
-```
+## Installation 🛠️
 
-## Development Server
+1. Clonez le dépôt :
 
-Start the development server on `http://localhost:3000`:
+   ```bash
+   git clone https://github.com/NinoDaSilva/ninoDaSilva_projetFront.git
+   ```
 
-```bash
-# npm
-npm run dev
+2. Accédez au répertoire du projet :
 
-# pnpm
-pnpm dev
+   ```bash
+   cd ninoDaSilva_projetFront
+   ```
 
-# yarn
-yarn dev
+3. Installez les dépendances :
 
-# bun
-bun run dev
-```
+   ```bash
+   npm install
+   ```
 
-## Production
+4. Lancez le projet en mode développement :
 
-Build the application for production:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-# npm
-npm run build
+5. Accédez à l'application dans votre navigateur à l'adresse suivante :
 
-# pnpm
-pnpm build
+   ```
+   http://localhost:3000
+   ```
 
-# yarn
-yarn build
+## Structure du projet 📂
 
-# bun
-bun run build
-```
+- **`components`** : Contient les composants réutilisables de l'application.
+- **`pages`** : Regroupe les différentes pages de l'application.
+- **`assets`** : Fichiers CSS, images et autres ressources statiques.
+- **`composables`** : Fonctions réutilisables pour la gestion de la logique métier.
+- **`layouts`** : Contient les fichiers de mise en page du site web.
 
-Locally preview production build:
+## Technologies utilisées 🛠️
 
-```bash
-# npm
-npm run preview
+- **Nuxt** : Framework JavaScript Vue.js pour construire l'interface utilisateur.
+- **TypeScript** : Pour un typage plus sûr dans le développement.
+- **SCSS** : Préprocesseur CSS pour une gestion avancée des styles.
+- **Sanity.io** : CMS utilisé pour la gestion des données affichées front-end.
 
-# pnpm
-pnpm preview
+## Auteur ✨
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Ce projet a été réalisé par **Nino Da Silva**. 
+Il est fictif et relève d'un exercice universitaire dans le cadre de mon BUT Métiers du Multimédia et de l'Internet.
